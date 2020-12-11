@@ -1,0 +1,27 @@
+import datetime
+import time
+from plyer import notification
+
+def main():
+    today = str(datetime.date.today())
+    today = today[5:]
+    data = {"gaurav":"11-15", "abc":"12-08"}
+    keys = list(data.keys())
+    values = list(data.values())
+    dataList = []
+    for i in data.values():
+        dataList.append(i)
+    while True:
+        if today in dataList:
+            name = keys[values.index(today)]
+            t = "Birthday!!"
+            m = f"Wish '{name}' happy birthday."
+        else:
+            t = "no birthday"
+            m = "none of your friends have birthday today, get to your work!"
+        
+        notification.notify(title = t, message = m)
+        time.sleep(60*60*24)#to check for birthday every 24 hours
+    
+if __name__ == "__main__":
+    main()
